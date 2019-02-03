@@ -22,6 +22,7 @@ class PagesController extends Controller
 
     public function services(){
         //return view('pages.services');
+        //multiple variable
         $data =  array(
             'title' => 'Ini Halaman Services',
             'services' => ['Web Design','programming','SEO']
