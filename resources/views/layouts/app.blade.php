@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <title>{{config('app.name', 'SiipurLara')}}</title>
     </head>
-    <body>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
         @include('inc.navbar')
         <div class="container">
             @yield('content')

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Post; // gunakan model post untuk controller ini
+use DB; //jika akan menggunakan query DB bukan Eloquent 
 class PostsController extends Controller
 {
     /**
@@ -13,7 +14,16 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        # jika menggunakan Query SQL (use DB)#
+        ///$posts = DB::select('SELECT * FROM posts');
+        # jika menggunakan Eloquent #
+        // return Post::all();
+        //$posts = Post::all();
+        //return $posts = Post::where('title','Post Kedua')->get();
+        //$posts = Post::orderBy('title','asc')->take(1)->get(); //ambil satu
+        //$posts = Post::orderBy('title','asc')->get();
+        $posts = Post::orderBy('title','asc')->paginate(1);
+        return view('posts.index')->with('posts', $posts);
     }
 
     /**
@@ -45,7 +55,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        //return Post::find($id);
+        $posts = Post::find($id);
+        return view('posts.show')->with('posts', $posts);
     }
 
     /**
