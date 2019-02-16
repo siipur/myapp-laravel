@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>POST</h1>
+    <span><a href="/posts/create">Buat Artikel (+)</a></span>
     @if (count($posts)>0)
         @foreach ($posts as $item)
             <div class="well">

@@ -3,7 +3,7 @@
 @section('content')
     <h1>{{$posts->title}}</h1>
     <div>
-        {{$posts->body}}
+        {!!$posts->body!!}
     </div>
     <hr/>
     <small>Written on {{$posts->created_at}}</small>

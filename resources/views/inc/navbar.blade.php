@@ -14,8 +14,11 @@
         <li class="nav-item">
             <a class="nav-link" href="/services">Services</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/posts">Blog</a>
+        <li class="nav-item" style="background-color: green">
+            <a class="nav-link" href="/posts">|| <strong>Blog or Artikel</strong> ||</a>
+        </li>
+        <li class="nav-item" style="background-color: green">
+            <a class="nav-link" href="/posts/create">|| <strong>(+) Buat Artikel</strong> ||</a>
         </li>
         </ul>
         <form class="form-inline my-2 my-md-0">
