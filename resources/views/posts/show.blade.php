@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>{{$posts->title}}</h1>
+    <h1>{{$post->title}}</h1>
     <div>
-        {!!$posts->body!!}
+        {!!$post->body!!}
     </div>
     <hr/>
-    <small>Written on {{$posts->created_at}}</small>
+    <small>Written on {{$post->created_at}}</small>
+    <hr/>
+    <a href="/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a>
 @endsection
