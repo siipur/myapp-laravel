@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post; // gunakan model post untuk controller ini
 use DB; //jika akan menggunakan query DB bukan Eloquent 
+
 class PostsController extends Controller
 {
     /**
