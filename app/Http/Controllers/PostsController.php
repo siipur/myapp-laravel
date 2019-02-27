@@ -8,6 +8,18 @@ use DB; //jika akan menggunakan query DB bukan Eloquent
 
 class PostsController extends Controller
 {
+
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        $this->middleware('auth', ['except' => ['index','show']]); //pengecualian untuk beberapa method
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +35,7 @@ class PostsController extends Controller
         //return $posts = Post::where('title','Post Kedua')->get();
         //$posts = Post::orderBy('title','asc')->take(1)->get(); //ambil satu
         //$posts = Post::orderBy('title','asc')->get();
-        $posts = Post::orderBy('created_at','desc')->paginate(3);
+        $posts = Post::orderBy('created_at','desc')->paginate(5);
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -83,6 +95,12 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+
+        // check for correct user
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized page');
+        }
+
         return view('posts.edit')->with('post', $post);
     }
 
@@ -120,8 +138,13 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        $post->delete();
 
+        // check for correct user
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized page');
+        }
+        
+        $post->delete();
         return redirect('/posts')->with('success', 'post remove');
     }
 }
