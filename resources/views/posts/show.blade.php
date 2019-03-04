@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <a href="/posts" class="btn btn-primary">Kembali</a>
     <h1>{{$post->title}}</h1>
+    <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}" alt="img">
+    <br/><br/>
     <div>
         {!!$post->body!!}
     </div>
